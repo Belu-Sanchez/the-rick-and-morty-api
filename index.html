@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--Import Google Icon Font-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!--Import materialize.css-->
+   <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+
+   <!--Let browser know website is optimized for mobile-->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <script
+   src="https://code.jquery.com/jquery-3.6.0.min.js"
+   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+   crossorigin="anonymous"></script>
+ <!-- favicon  -->
+   <link rel="shortcut icon" href="imagenes/rick_96136.png">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link rel="stylesheet" href="./style.css">
+  <title>The Rick and Morty</title>
+</head>
+<body>
+<div >
+  <img class="imagen" src="imagenes/909641.png" alt="">
+</div>
+<!-- Dropdown Structure -->
+
+<ul id="dropdown1" class="dropdown-content">
+  <li ><a class="todos genero" href="#!">Todos</a></li>
+  <li ><a id="mujer" href="#!">Mujer</a></li>
+  <li ><a id="hombre" href="#!">Hombre</a></li>
+  <!-- <li class="divider"></li>
+  <li><a href="#!">three</a></li> -->
+</ul>
+<ul id="dropdown2" class="dropdown-content">
+  <li ><a class="todos especie" href="#!">Todos</a></li>
+  <li><a id="humanos" href="#">Humanos</a></li>
+  <li><a id="aliens" href="#">Aliens</a></li>
+  <!-- <li class="divider"></li>
+  <li><a href="#!">three</a></li> -->
+</ul>
+<nav>
+  <div class="nav-wrapper  purple accent-3">
+    <a href="#!" class="brand-logo"> The Rick and Morty</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a class="personajes" id="personajes" href="#">Personajes</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Genero<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Especie<i class="material-icons right">arrow_drop_down</i></a></li>
+
+    
+    
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid"> 
+  <div id="root" class="row">
+
+
+
+
+
+  </div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+<footer class="page-footer purple accent-3">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Footer</h5>
+      </div>
+      <div class="col l4 offset-l2 s12">
+
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2022 Copyright Belu-Sanchez 
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+  <script src="./app.js"></script>
+</body>
+</html>
