@@ -6,21 +6,60 @@ const aliens = document.getElementById('aliens');
 const humanos = document.getElementById('humanos');
 const personajes = document.getElementById('personajes');
 
-const getData = () => {
-  const url = 'https://rickandmortyapi.com/api/character';
-  fetch(url)
-  .then(resp => resp.json())
-  .then(json => { printData(json.results)
-  data = json;
-  })
-  .catch(err => err);
 
+
+//paginador
+
+const paginaActual = document.querySelector("#pagina-actual");
+const totalPaginas = document.querySelector('#total-paginas');
+const firstPage = document.querySelector('#first-page');
+const previusPage = document.querySelector('#previus-page');
+const nextPage = document.querySelector('#next-page');
+const lastPage = document.querySelector('#last-page');
+
+//loader
+
+const loader = document.getElementById('contenedor')
+
+
+
+
+let pagina = 1;
+let total = 0;
+
+
+const getData = async() => {
+  loader.classList.remove('esconder')
+  root.classList.add('esconder')
+  const url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;
+  // fetch(url)
+  // .then(resp => resp.json())
+  // .then(json => { 
+  //   printData(json.results)
+  // data = json;
+  // })
+  // .catch(err => console.error(err))
+const resp = await fetch(url)
+const json = await resp.json()
+printData(json.results)
+total = json.info.pages
+paginaActual.innerHTML = pagina
+totalPaginas.innerHTML = total
+
+data = json
+updatePagination()
+setTimeout(() => {
+  loader.classList.add('esconder')
+  root.classList.remove('esconder')
+
+},1000);
+return json;
 }
 
 let data = [];
 
 const printData = (json) => {
-  data = json
+
   const arr = json;
   let card = '';
   arr.forEach(personaje => {
@@ -53,6 +92,16 @@ const printData = (json) => {
  root.innerHTML = card
 }
 
+//FILTROS
+
+
+personajes.addEventListener('click', () =>{
+  const todosPersonajes = data.results.filter(personaje =>  personaje.gender !== 'Male'  || 'Female' )
+  printData(todosPersonajes)
+
+})
+
+
 
 
 mujer.addEventListener('click', e => {
@@ -84,46 +133,59 @@ humanos.addEventListener('click', () => {
 
 
 
-
-// const todosLosPersonajes = () => {
-//   const todosOpcion = document.getElementsByClassName('todos');
-
-//   for (let i = 0; i < todosOpcion.length; i++) {
-//   const todosSelect = todosOpcion[i]
-//       if(todosSelect.classList.contains('genero')){
-//           console.log('hola')
-//       }
-
-
-// //     const todos = todos[i];
-// //     if(todos.classList.contains('genero')){
-// // //     todos.addEventListener('click', e => {
-// // // console.log('genero')
-
-// // //   })
-//   }
-    
-// // }
-// }
-// todosLosPersonajes()
-
-
-
-
-
-
-
-
-
-personajes.addEventListener('click', () =>{
+const pagination = async (promesas) => {
+  const result = await promesas
+nextPage.addEventListener('click', () => {
+  pagina += 1;
   getData();
 })
+previusPage.addEventListener('click', () => {
+  pagina -= 1;
+  getData();
+})
+lastPage.addEventListener('click', () =>{
+  if(pagina <= result.info.pages){
+      pagina = result.info.pages
+      getData()
+      console.log()
+  }
+})
+firstPage.addEventListener('click', () =>{
+  if(pagina >= 2){
+      pagina = 1
+      getData(result.info.pages)
+  }
+})
+}
+
+const updatePagination = () => {
+  if(pagina <= 1){
+    previusPage.disabled = true;
+    firstPage.disabled = true;
+  }else{
+    previusPage.disabled = false;
+    firstPage.disabled = false;
+  }
+  if(pagina == total){
+    nextPage.disabled = true;
+    lastPage.disabled = true;
+  }else{
+    nextPage.disabled = false;
+    lastPage.disabled = false;
+  }
+    
+}
+
+
+
+
+
 
 
 
 
 $( document ).ready(function(){
   $(".dropdown-trigger").dropdown();
-  getData();
+  pagination(getData());
 })
 
