@@ -1,3 +1,10 @@
+.titulo-css{
+    font-size: 1em;
+    padding-left: 1em;
+
+    /* content: url(./imagenes/rick_96136.png) */
+}
+
 .card-content {
     height: 18vh;
 }
@@ -134,8 +141,8 @@ div.contenedor {
 }
 
 .div {
-    width: 3vw;
-    height: 3vw;
+    width: 4vw;
+    height: 4vw;
     border-radius: 100%;
     margin: 2vw;
     background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
@@ -143,23 +150,28 @@ div.contenedor {
 }
 
 .yellow {
+    content: url(./imagenes/rick_96136.ico);
     background-color: var(--yellow);
 }
 
 .red {
     background-color: var(--red);
+    content: url(./imagenes/rick_96136.ico);
     animation-delay: 0.1s;
 }
 
 .blue {
     background-color: var(--blue);
+    content: url(./imagenes/rick_96136.ico);
     animation-delay: 0.2s;
 }
 
 .violet {
     background-color: var(--violet);
+    content: url(./imagenes/rick_96136.ico);
     animation-delay: 0.3s;
 }
+
 
 @keyframes bounce {
 
@@ -172,11 +184,11 @@ div.contenedor {
 
     25% {
         transform: scale(0.6);
-        filter: blur(3px);
+        filter: blur(2px);
     }
 
     75% {
-        filter: blur(3px);
+        filter: blur(2px);
         transform: scale(1.4);
     }
 }
